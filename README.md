@@ -7,7 +7,7 @@ Each word scrolls up one by one with a soft transition — and loops infinitely 
 
 ## 🌐 Live Demo
 
-👉 <a href="https://yourusername.github.io/animated-text-loop" target="_blank">Live Demo</a>
+👉 <a href="https://ismail-fsbb.github.io/Smooth-Animation-Text/" target="_blank">Live Demo</a>
 
 ---
 
