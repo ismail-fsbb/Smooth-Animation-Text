@@ -35,6 +35,6 @@ Each word scrolls up one by one with a soft transition — and loops infinitely 
 ### 🔧 Clone and Run
 
 ```bash
-git clone https://github.com/yourusername/animated-text-loop.git
-cd animated-text-loop
+git clone https://github.com/ismail-fsbb/Smooth-Animation-Text.git
+cd Smooth-Animation-Text
 open index.html
