@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Smooth Animated Text</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;900&display=swap" rel="stylesheet"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #023047;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .loader {
+            display: flex;
+            align-items: center;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 40px;
+            font-weight: 900;
+            margin-right: 12px;
+        }
+
+        .animate_text_wrapper {
+            height: 48px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .animated_list {
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .animated_text {
+            font-size: 40px;
+            font-weight: 900;
+            color: #dda15e;
+            line-height: 48px;
+            height: 48px;
+        }
+    </style>
+</head>
+<body>
+    <div class="loader">
+        <h1>I Love</h1>
+        <div class="animate_text_wrapper">
+            <div class="animated_list" id="animatedList">
+                <span class="animated_text">Python</span>
+                <span class="animated_text">Java</span>
+                <span class="animated_text">Swift</span>
+                <span class="animated_text">JavaScript</span>
+                <span class="animated_text">PHP</span>
+                <!-- Clone first item for seamless loop -->
+                <span class="animated_text">Python</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const list = document.getElementById('animatedList');
+        const items = list.children;
+        const total = items.length;
+        let index = 0;
+        let height = items[0].offsetHeight;
+        const delay = 2000;
+
+        function moveNext() {
+            index++;
+            list.style.transform = `translateY(-${index * height}px)`;
+
+            if (index === total - 1) {
+                setTimeout(() => {
+                    list.style.transition = 'none';
+                    list.style.transform = 'translateY(0px)';
+                    index = 0;
+                    void list.offsetHeight; // force reflow
+                    list.style.transition = 'transform 0.5s ease-in-out';
+                }, 500); // matches transition duration
+            }
+        }
+
+        setInterval(moveNext, delay);
+
+        window.addEventListener('resize', () => {
+            height = items[0].offsetHeight;
+        });
+    </script>
+</body>
+</html>
